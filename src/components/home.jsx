@@ -1,5 +1,6 @@
 import React from 'react'
 import "../assets/css/home.css";
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -7,7 +8,7 @@ function Home() {
         <h1>CalcSuite</h1>
         <div className="tasks-wrapper">
             <div className="task-item mb-20">
-                <button>Age Calculator</button>
+                <Link to="/age-calculator">Age Calculator</Link>
             </div>
             <div className="task-item mb-20">
                <button>Currency Converter</button>
