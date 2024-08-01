@@ -14,7 +14,7 @@ function Home() {
                <button>Currency Converter</button>
             </div>
             <div className="task-item mb-20">
-               <button>BMI Calculator</button>
+               <Link to="/bmi-calculator">BMI Calculator</Link>
             </div>
             <div className="task-item mb-20">
                <button>Length Calculator</button>
