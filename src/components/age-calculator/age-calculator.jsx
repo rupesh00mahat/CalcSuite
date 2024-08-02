@@ -1,23 +1,25 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from "react";
+import { CalcSuiteContext } from "../../context/calcusuite-context";
+import {ACTIONTYPE} from "../../context/calcusuite-context";
 
 function AgeCalculator() {
-    const dobValue = useRef();
-    const [age, setAge] = useState(undefined); 
+  const dobValue = useRef();
 
-    const calculateDate= (dob) =>{
-        let ageinMS = new Date() - new Date(dob); //gives result in millisecond
-        let year = ageinMS/(86400000*365.25);
-        setAge(year);
-    }
-
+const {state, dispatch} = useContext(CalcSuiteContext);
+console.log(state);
   return (
-    <div className='age-calculator-wrapper'>
-<input type='date' id='dob' name='dob' ref={dobValue}/>
-<button onClick={()=>{
-calculateDate(dobValue.current.value)}}>Calculate Age</button>
-{age != undefined && <p>Your age is {Math.floor(age)}</p>}
+    <div className="age-calculator-wrapper">
+      <input type="date" id="dob" name="dob" ref={dobValue} />
+      <button
+        onClick={() => {
+          dispatch({type: ACTIONTYPE.CALCULATEAGE, payload: dobValue.current.value})
+        }}
+      >
+        Calculate Age
+      </button>
+      {state.age != undefined && <p>Your age is {Math.floor(state.age)}</p>}
     </div>
-  )
+  );
 }
 
-export default AgeCalculator
+export default AgeCalculator;
